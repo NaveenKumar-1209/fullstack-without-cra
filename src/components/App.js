@@ -1,7 +1,9 @@
 import React from "react";
+import { RouterProvider } from "react-router-dom";
+import router from "../Router";
 
 const App = () => {
-  return <div>Hello world! live reload</div>;
+  return <RouterProvider router={router} />;
 };
 
 export default App;

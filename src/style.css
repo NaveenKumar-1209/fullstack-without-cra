@@ -1,0 +1,42 @@
+header.header-root {
+  width: 100%;
+  height: 50px;
+  background-color: #5590ed;
+}
+.header-root {
+  display: flex;
+  align-items: center;
+}
+.header-root > .logo {
+  color: #fff;
+  font-size: 2rem;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+}
+.header-root > .logo > a {
+  color: #fff;
+  font-size: 2rem;
+  text-decoration: none;
+}
+.header-root > ul.menu-section {
+  display: flex;
+  width: 50%;
+}
+.header-root > ul.profile {
+  display: flex;
+  width: 30%;
+  justify-content: flex-end;
+}
+.header-root > ul.menu-section > li,
+.header-root > ul.profile > li {
+  list-style: none;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.header-root > ul.menu-section > li > a,
+.header-root > ul.profile > li > a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
