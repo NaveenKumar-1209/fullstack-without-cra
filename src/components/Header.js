@@ -1,7 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Header = () => {
+  const profile = useSelector((state) => state);
+  let isLogin = false;
+  console.log("state", profile);
   return (
     <header className="header-root">
       <div className="logo">
@@ -15,14 +19,18 @@ const Header = () => {
           <Link to="/contact">Contact</Link>
         </li>
       </ul>
-      <ul className="profile">
-        <li>
-          <Link to="/login">Login</Link>
-        </li>
-        <li>
-          <Link to="/registration">Sign Up</Link>
-        </li>
-      </ul>
+      {isLogin ? (
+        <div>Profile</div>
+      ) : (
+        <ul className="profile">
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+          <li>
+            <Link to="/registration">Sign Up</Link>
+          </li>
+        </ul>
+      )}
     </header>
   );
 };
