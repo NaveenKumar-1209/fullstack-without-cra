@@ -1,4 +1,9 @@
-import { LOGIN, REGISTRATION, REGISTRATION_ERROR } from "./types";
+import {
+  LOGIN,
+  REGISTRATION,
+  REGISTRATION_ERROR,
+  SIGNOUT_ACTION,
+} from "./types";
 import axios from "axios";
 import appUrl from "../utils/config";
 
@@ -26,5 +31,14 @@ export const registration = (data) => {
         });
       }
     }
+  };
+};
+
+export const signOutAction = () => {
+  return async (dispatch) => {
+    dispatch({
+      type: SIGNOUT_ACTION,
+      payload: "",
+    });
   };
 };

@@ -1,4 +1,9 @@
-import { LOGIN, REGISTRATION, REGISTRATION_ERROR } from "./types";
+import {
+  LOGIN,
+  REGISTRATION,
+  REGISTRATION_ERROR,
+  SIGNOUT_ACTION,
+} from "./types";
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
 
@@ -22,6 +27,9 @@ export const ProfileLoginReducer = (state = initialState, action) => {
       };
     case REGISTRATION_ERROR:
       return { ...state, error: action.payload, loading: false };
+    case SIGNOUT_ACTION:
+      console.log("signout");
+      return { ...state, profile: null, token: "", isLogin: false, error: "" };
     default:
       return { ...state };
   }

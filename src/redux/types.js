@@ -1,3 +1,4 @@
 export const LOGIN = "LOGIN";
 export const REGISTRATION = "REGISTRATION";
 export const REGISTRATION_ERROR = "REGISTRATION_ERROR";
+export const SIGNOUT_ACTION = "SIGNOUT_ACTION";

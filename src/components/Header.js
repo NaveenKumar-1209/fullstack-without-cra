@@ -1,9 +1,27 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import AvatarName from "../shared/avatar/Avatar";
+import HeaderPopover from "./HeaderPopover";
+import Popover from "@mui/material/Popover";
+import { MyPopover } from "./style";
+import { signOutAction } from "../redux/action";
 
 const Header = () => {
   const profile = useSelector((state) => state.profile);
+  const dispatch = useDispatch();
+  const [options, setOptions] = useState(null);
+  const openAvatarModel = (e) => {
+    setOptions(e.currentTarget);
+  };
+  const handleClose = () => {
+    setOptions(null);
+  };
+  const signOut = () => {
+    dispatch(signOutAction());
+  };
+  const open = Boolean(options);
+  const id = open ? "simple-popover" : undefined;
   return (
     <header className="header-root">
       <div className="logo">
@@ -18,7 +36,26 @@ const Header = () => {
         </li>
       </ul>
       {profile?.isLogin ? (
-        <div className="profile-name">{profile?.profile?.name}</div>
+        <ul className="profile">
+          <li onClick={openAvatarModel} style={{ cursor: "pointer" }}>
+            <AvatarName name={profile.profile.name} />
+            <Popover
+              id={id}
+              open={open}
+              anchorEl={options}
+              onClose={handleClose}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "left",
+              }}
+              className="popover"
+            >
+              <MyPopover>
+                <HeaderPopover name={profile.profile.name} signOut={signOut} />
+              </MyPopover>
+            </Popover>
+          </li>
+        </ul>
       ) : (
         <ul className="profile">
           <li>
