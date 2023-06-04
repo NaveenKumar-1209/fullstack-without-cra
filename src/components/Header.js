@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const profile = useSelector((state) => state);
+  const profile = useSelector((state) => state.profile);
   return (
     <header className="header-root">
       <div className="logo">

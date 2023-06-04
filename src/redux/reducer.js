@@ -1,7 +1,9 @@
 import { LOGIN, REGISTRATION, REGISTRATION_ERROR } from "./types";
+import storage from "redux-persist/lib/storage";
+import { persistReducer } from "redux-persist";
 
 let initialState = {
-  profile: {},
+  profile: null,
   token: "",
   isLogin: false,
   error: "",
@@ -24,3 +26,11 @@ export const ProfileLoginReducer = (state = initialState, action) => {
       return { ...state };
   }
 };
+
+const persistConfig = {
+  keyPrefix: "lifely-",
+  key: "profile",
+  storage,
+};
+
+export default persistReducer(persistConfig, ProfileLoginReducer);
