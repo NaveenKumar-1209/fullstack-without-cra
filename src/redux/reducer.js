@@ -5,6 +5,7 @@ let initialState = {
   token: "",
   isLogin: false,
   error: "",
+  loading: true,
 };
 export const ProfileLoginReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -14,12 +15,12 @@ export const ProfileLoginReducer = (state = initialState, action) => {
         profile: action.payload,
         isLogin: true,
         token: action.payload.token,
+        error: "",
+        loading: false,
       };
-      break;
     case REGISTRATION_ERROR:
-      return { ...state, error: action.payload };
+      return { ...state, error: action.payload, loading: false };
     default:
       return { ...state };
-      break;
   }
 };

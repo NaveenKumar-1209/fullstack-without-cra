@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const profile = useSelector((state) => state.profile);
+  const profile = useSelector((state) => state);
   return (
     <header className="header-root">
       <div className="logo">
@@ -18,7 +18,7 @@ const Header = () => {
         </li>
       </ul>
       {profile?.isLogin ? (
-        <div>Profile</div>
+        <div className="profile-name">{profile?.profile?.name}</div>
       ) : (
         <ul className="profile">
           <li>
